@@ -1,6 +1,5 @@
 # The Repo is for Data Structure and Algorithm
-<br>
-QuickSort Algorithm:
+<u> QuickSort Algorithm:  </u>
 <br>
     ->Sorting Algorithm technique
     <br>
