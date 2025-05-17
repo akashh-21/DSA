@@ -1,0 +1,26 @@
+Problem Statement:
+    Given two binary strings s1 and s2, add them and return the resulting binary string. The result should:
+    Correctly handle carries.
+    Support binary strings of different lengths.
+    Remove any leading zeros (except for the case when the result is actually "0").
+
+
+Explanation:
+    Pointers (i, j) start from the end of s1 and s2 (least significant bits).
+    In each iteration of the while loop:
+    Extract corresponding bits (x1 and x2), or 0 if one string is shorter.
+    Compute the sum with carry.
+    Update the carry for the next iteration.
+    Append the current binary digit (sum % 2) to the result string.
+    After the loop:
+        Reverse the result since we built it from least significant to most significant bit.
+        Trim leading zeros using a loop and substr().
+    Return "0" if the trimmed result is empty (i.e., both inputs were "0").
+
+Input And Output:
+    Input:
+    s1 = "01001001"
+    s2 = "0110101"
+
+    Output:
+    "1111110"
