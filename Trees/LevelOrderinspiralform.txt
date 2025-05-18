@@ -1,0 +1,20 @@
+Problem statment:
+    Given a binary tree and the task is to find the spiral order traversal of the tree and return the list containing the elements.
+    Spiral order Traversal mean: Starting from level 0 for root node, for all the even levels we print the node's value from right to left and for all the odd levels we print the node's value from left to right.
+    For below tree, function should return [1, 2, 3, 4, 5, 6, 7]
+    1
+   / \
+  2   3
+ / \ / \
+7  6 5  4
+
+## 🧠 Algorithm:
+
+The traversal uses **recursive DFS** with level tracking:
+
+    1. Compute the **height** of the tree.
+    2. For each level:
+    - If the level is **even** (0-based), traverse **right to left**.
+    - If the level is **odd**, traverse **left to right**.
+    3. Use helper functions `LeftToRight()` and `RightToLeft()` for recursive traversal.
+    4. Collect node values in a result vector and print them.
