@@ -1,0 +1,35 @@
+This C++ program implements a Binary Search Tree (BST) and includes functionality to find the **predecessor** and **successor** of a given key in the BST.
+
+Problem Statment:
+    You are given root node of the BST and an integer key. You need to find the in-order successor and predecessor of the given key. 
+    If either predecessor or successor is not found, then set it to NULL.
+
+Note:- In an inorder traversal the number just smaller than the target is the predecessor and the number just 
+        greater than the target is the successor. 
+
+root[] = [20, 8, 22, 4, 12, 10, 14], key = 10
+       20
+      /  \
+     8    22
+    / \
+   4   12
+      /  \
+     10  14
+    Predecessor of 10 is 8
+    Successor of 10 is 12
+## 📌 Features
+
+- BST node insertion
+- In-order predecessor and successor finding
+- Clean and simple implementation in C++
+- Easy to test and extend
+
+
+## 🧠 Algorithm
+
+1. Traverse the BST to locate the node with the target key.
+2. If the node is found:
+   - Predecessor is the rightmost node in the left subtree.
+   - Successor is the leftmost node in the right subtree.
+3. If the node is not found:
+   - Traverse the tree while keeping track of potential predecessors and successors.
