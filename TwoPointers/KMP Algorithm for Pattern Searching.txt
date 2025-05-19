@@ -1,0 +1,85 @@
+Problem Statment:
+    Given two strings txt and pat, the task is to return all indices of occurrences of pat within txt.
+
+    Examples:
+
+    Input: txt = "abcab",  pat = "ab"
+    Output: [0, 3]
+    Explanation: The string "ab" occurs twice in txt, first occurrence starts from index 0 and second from index 3.
+
+    Input: txt=  "aabaacaadaabaaba", pat =  "aaba"
+    Output: [0, 9, 12]
+# KMP (Knuth-Morris-Pratt) String Matching Algorithm
+
+This project demonstrates the implementation of the **KMP algorithm**, an efficient string matching algorithm used to find all occurrences of a **pattern** in a **text**. It improves over the brute-force approach by avoiding unnecessary re-comparisons.
+
+---
+
+
+
+---
+
+## ⚙️ Algorithm Used
+
+### 🔹 KMP Algorithm (Knuth-Morris-Pratt)
+
+- Preprocesses the pattern to create an **LPS array** (Longest Prefix which is also Suffix).
+- Uses the LPS array to **skip characters** while matching.
+- Time Complexity: **O(n + m)**, where `n` = length of text, `m` = length of pattern.
+
+---
+
+## 📌 How It Works
+
+### 1. **Construct LPS Array**
+The `lps[]` array is built for the pattern.  
+For each position `i`, `lps[i]` stores the length of the longest prefix which is also a suffix for the substring `pat[0...i]`.
+
+Example for pattern `"aaba"`:
+Index: 0 1 2 3
+Pattern: a a b a
+LPS: 0 1 0 1
+
+### 2. **Pattern Matching using LPS**
+
+- Compare characters from text and pattern.
+- On **match**, move both pointers.
+- On **mismatch**:
+  - Use `lps[j - 1]` to decide next `j` (pattern pointer).
+  - Do not reset `i` (text pointer).
+
+---
+
+## 📄 Code Files
+
+- `main.cpp`: Contains the complete working code of KMP search.
+- `README.md`: This file, explaining the algorithm and usage.
+
+---
+
+## 🧪 Sample Input / Output
+
+**Text**: `"aabaacaadaabaaba"`  
+**Pattern**: `"aaba"`
+
+**Output**:
+Pattern found at indices: 0 9 12
+
+## 📚 References
+
+- [KMP Algorithm - GeeksforGeeks](https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/)
+- [KMP on Wikipedia](https://en.wikipedia.org/wiki/Knuth–Morris–Pratt_algorithm)
+
+---
+
+## 👨‍💻 Author
+
+Created by [Your Name] as a study and reference implementation for string matching using KMP algorithm.
+
+---
+
+## 🏁 How to Run
+
+```bash
+g++ main.cpp -o kmp
+./kmp
