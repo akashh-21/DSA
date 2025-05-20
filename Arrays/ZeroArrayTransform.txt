@@ -1,0 +1,51 @@
+# isZeroArray - Efficient Range Decrement Checker
+
+## 🚀 Problem Statement
+
+You are given an array `nums` and a list of `queries`.  
+Each query is a pair `[left, right]`, and for every such query, you are supposed to **decrease all elements from index `left` to `right` by 1**.
+
+Your goal is to check:
+> ✅ After applying all the queries, are all the elements in the array less than or equal to zero?
+
+If yes, return `true`.  
+If not, return `false`.
+
+---
+
+## 🧠 Logic (Easy to Remember!)
+
+Imagine `nums` as energy levels of robots.  
+Each query is a command to **drain energy** from robots in a certain range.
+
+But instead of draining energy one robot at a time (which is slow ⚠️),  
+we use a **difference array** to mark the "start" and "end" of draining, and apply it in one fast sweep!
+
+---
+
+### 💡 Core Idea: Use a Difference Array
+
+The **difference array technique** helps us apply range updates efficiently.
+
+#### 🔧 How it works:
+1. We create a `diffArray` initialized with 0s (size `n+1`).
+2. For each query `[left, right]`:
+   - We add `+1` at `diffArray[left]` → "Start adding 1 here"
+   - We subtract `-1` at `diffArray[right+1]` → "Stop adding 1 after right"
+3. We then compute a **prefix sum** of `diffArray` to get how many times each index is decremented.
+4. For each index `i`, we check:
+   - If the **number of decrements** is **less than** the original value at `nums[i]`, then it's not zero yet → ❌ return `false`.
+5. If all values are zero or less → ✅ return `true`.
+
+---
+
+## ✅ Example
+
+```cpp
+nums = [2, 1, 1]
+queries = [[0, 1], [1, 2]]
+output: true
+
+References:
+    https://leetcode.com/problems/zero-array-transformation-i/
+
