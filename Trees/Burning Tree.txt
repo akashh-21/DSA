@@ -1,0 +1,65 @@
+# Minimum Time to Burn a Binary Tree from a Target Node
+
+## Problem Statement
+Given a binary tree and a target node, find the minimum time required to burn the entire tree if the target node is set on fire initially. 
+
+- The fire spreads in **1 second** from a burning node to its **left child**, **right child**, and **parent**.
+- The tree contains **unique values**.
+
+---
+
+## Approach Explained
+
+To solve this problem, the main challenge is that fire spreads not only to the children but also **upwards to the parent** nodes, which is not directly accessible from the node.
+
+### Step 1: Map each node to its parent
+
+- We perform a **level order traversal** (BFS) of the tree.
+- For each node, we store its parent in a hash map (`unordered_map<Node*, Node*>`).
+- This allows us to quickly access the parent of any node later.
+- At the same time, we find and keep a pointer to the **target node** where fire starts.
+
+### Step 2: Simulate the fire spread using BFS
+
+- We start BFS from the **target node** and use a queue to track burning nodes.
+- Maintain a `visited` map to keep track of nodes already burned (to avoid reprocessing).
+- At each step (each second), the fire spreads from current burning nodes to:
+  - Left child
+  - Right child
+  - Parent (using the parent map)
+- We continue this until no new nodes catch fire.
+- The number of BFS levels processed gives the **minimum time required**.
+
+---
+
+## Why BFS?
+
+- BFS processes nodes layer-by-layer (or level-by-level).
+- Each level corresponds to one second of fire spreading.
+- This naturally models how the fire spreads simultaneously to all neighboring nodes.
+
+---
+
+## Code Walkthrough
+
+- **mapToParent**: Builds the parent map and finds the target node.
+- **FindMaxTime**: BFS to simulate fire spreading and calculates time.
+- **minTime**: Calls the above two functions and returns the answer.
+
+---
+
+## Example
+
+Constructing the tree:
+    //        1
+    //      /   \
+    //     2     3
+    //    / \   / \
+    //   4   5 6   7
+    target = 2;
+    The fire starts at node 2.
+    The minimum time required for the fire to reach all nodes is 2 seconds.
+
+References:
+    https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/description/
+    https://www.geeksforgeeks.org/problems/burning-tree/1
