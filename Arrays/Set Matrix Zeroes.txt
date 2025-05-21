@@ -1,0 +1,65 @@
+# 🚫 Set Matrix Zeroes
+
+This project implements a simple and easy-to-understand solution to the famous **Set Matrix Zeroes** problem using C++. The idea is to mark rows and columns that must be set to zero, then apply those changes.
+
+---
+
+## 📌 Problem Statement
+
+Given an `m x n` matrix, if any element is `0`, set its entire **row and column** to `0`.
+
+### 🔸 Example:
+
+Input:  1 2 3
+        4 0 6
+        7 8 9
+
+Output: 1 0 3
+        0 0 0
+        7 0 9
+
+
+---
+
+## 💡 Intuition (Never Forget Logic Again!)
+
+> 🔍 Think of it like this:  
+> You are told which cell is "infected" with a `0`, and once infected, it spreads to the **entire row and column** — just like a virus!
+
+We don’t want to spread it immediately (or we’ll mark too many by mistake), so we first **mark the infected rows and columns**.
+
+---
+
+## 🧠 Logic – Step by Step
+
+1. **Mark the Infected Rows and Columns:**
+   - Traverse the matrix.
+   - Whenever you find a `0`, mark its row and column using two separate arrays: `row[]` and `colmn[]`.
+
+2. **Set Rows to Zero:**
+   - For every marked row, set the entire row to `0`.
+
+3. **Set Columns to Zero:**
+   - For every marked column, set the entire column to `0`.
+
+---
+
+## 🧾 Code Summary
+
+```cpp
+vector<int> row(m, false);
+vector<int> colmn(n, false);
+
+// Step 1: Mark rows and columns that should be zero
+if (matrix[i][j] == 0) {
+    row[i] = true;
+    colmn[j] = true;
+}
+
+// Step 2: Set marked rows and columns to 0
+
+----
+⏱️ Time & Space Complexity
+Time: O(m × n)
+
+Space: O(m + n) (for storing row and column markers)
