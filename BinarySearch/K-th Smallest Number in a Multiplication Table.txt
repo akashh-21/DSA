@@ -1,0 +1,55 @@
+# 🔢 K-th Smallest Number in a Multiplication Table
+
+This project implements an efficient C++ solution to find the **k-th smallest number** in an `m x n` multiplication table using **binary search**.
+
+---
+
+## 📌 Problem Statement
+
+Given two integers `m` and `n` representing the dimensions of a multiplication table, find the **k-th smallest number** in the table.
+
+### Example
+
+For `m = 3`, `n = 3`, the multiplication table is:
+
+1 2 3
+2 4 6
+3 6 9
+
+Brute Force:
+    create Array with i*j values using to loops
+    Sort values
+    return k-1 th value
+
+Optimised Solution:
+This solution uses **binary search** on the value range (1 to `m * n`). For each middle value, it counts how many numbers in the table are less than or equal to that number.
+
+### Key Functions:
+
+- **`count(val, m, n)`**:  
+  Counts how many numbers in the `m x n` multiplication table are less than or equal to `val`.
+
+- **`kthSmallest(m, n, k)`**:  
+  Uses binary search to find the smallest number such that at least `k` numbers are ≤ that number.
+
+---
+
+## 💡 Logic Behind `count(val, m, n)`
+
+    In row `i` of the table:
+    - The values are `i, 2i, 3i, ..., ni`
+    - Number of values ≤ `val` is `min(val / i, n)`
+
+    Sum this for all rows `i = 1 to m` to get the total count.
+
+    ---
+
+    ## 🧠 Time Complexity
+
+    - Count function: `O(m)`  
+    - Binary Search: `O(log(m * n))`  
+    - **Overall:** `O(m * log(m * n))`
+
+References: 
+    https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/description/
+    https://www.geeksforgeeks.org/problems/kth-smallest-number-in-multiplication-table/1
