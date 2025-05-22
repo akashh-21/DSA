@@ -1,0 +1,61 @@
+# Median of Two Sorted Arrays (C++)
+
+This project provides a C++ implementation to find the **median of two sorted arrays** using a custom merge algorithm.
+
+---
+
+## 🚀 Problem Overview
+
+You are given two sorted arrays:  
+🔹 `nums1`  
+🔹 `nums2`  
+
+Your goal is to merge them and return the **median** of the combined array.  
+
+🧠 **Median**:  
+- If the total number of elements is **odd**, the median is the **middle element**.  
+- If **even**, the median is the **average of the two middle elements**.
+
+---
+
+## 🛠️ Algorithm Logic (Explained to Never Forget)
+
+### 🔁 Step-by-Step Logic:
+
+1. **Use 3 pointers**:
+   - `i` → end of `nums1`
+   - `j` → end of `nums2`
+   - `k` → end of new merged array `arr`
+
+2. **Merge from back to front** (high to low):
+   - Compare `nums1[i]` and `nums2[j]`.
+   - Place the larger of the two at `arr[k]`.
+   - Decrement `i` or `j`, and also `k`.
+
+3. **Fill remaining elements**:
+   - If one array finishes early, copy the rest from the other.
+
+4. **Find the median** from the merged `arr`:
+   - If total size is even → average of two middle elements.
+   - If odd → return the middle element.
+
+---
+
+## 📌 Key Insight to Remember the Logic
+
+🔁 "Merge from the end because we're inserting the **largest elements first**."  
+📊 "Then just find the median in the usual way."
+
+---
+
+## 📦 Sample Input & Output
+
+```cpp
+nums1 = [1, 3, 5]
+nums2 = [2, 4, 6]
+Merged: [1, 2, 3, 4, 5, 6]
+Median: (3 + 4) / 2 = 3.5
+
+References:
+    https://leetcode.com/problems/median-of-two-sorted-arrays/
+    https://www.geeksforgeeks.org/problems/median-of-2-sorted-arrays-of-different-sizes/1
