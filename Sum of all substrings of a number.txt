@@ -1,0 +1,71 @@
+# 🚀 Sum of All Substrings of a Numeric String
+
+This project contains a C++ program to calculate the **sum of all numeric substrings** of a given string of digits.
+
+## 🔍 What is the problem?
+
+Given a numeric string like `"123"`, generate all possible substrings that are valid numbers and add them:
+
+- Substrings: "1", "2", "3", "12", "23", "123"
+- Sum: 1 + 2 + 3 + 12 + 23 + 123 = **164**
+
+We want to do this efficiently **without generating each substring explicitly**.
+
+---
+
+## 💡 Core Idea (Unforgettable Logic)
+
+Think of a string like a **factory of substrings**. Every new digit in the string becomes the tail of multiple new substrings.
+
+Let’s break it down using `"123"` as example:
+
+### Step-by-step:
+- At `i = 0` → `'1'`  
+  Only one substring: `"1"` → `sum = 1`
+  
+- At `i = 1` → `'2'`  
+  New substrings ending here: `"2"`, `"12"`  
+  Multiply `2` by `(i+1) = 2` because two substrings end here →  
+  `"2"` once, `"12"` once  
+  So contribution of `'2'` = `2*2 = 4`, plus previous total `tsum * 10 = 1*10 = 10`  
+  → `tsum = 4 + 10 = 14`  
+  → `sum = 1 + 14 = 15`
+  
+- At `i = 2` → `'3'`  
+  New substrings: `"3"`, `"23"`, `"123"`  
+  Multiply `3` by `(i+1) = 3` → `3*3 = 9`, plus previous total `tsum * 10 = 14*10 = 140`  
+  → `tsum = 9 + 140 = 149`  
+  → `sum = 15 + 149 = 164`
+
+🎯 This is the **magic formula**:
+
+tsum = (i+1) * digit + tsum * 10
+sum += tsum
+
+No need to generate all substrings manually. We just **carry forward** the contributions efficiently.
+
+---
+
+## 🧠 Why this logic is unforgettable
+
+- We treat each digit as a **contributor to multiple substrings**.
+- `(i+1)` tells us **how many substrings end** at that digit.
+- `tsum` accumulates **the total contribution of all substrings** ending at the current index.
+- Multiply `tsum` by `10` because the digit shifts left when it's part of a longer number.
+
+> Each digit is like a celebrity guest in a reality show — the longer they stay (further to the right), the more appearances they make!
+
+---
+
+## 🧪 Sample Input & Output
+
+```bash
+Input: 123
+Output: 164
+
+Input: 321
+Output: 153
+
+References:
+    https://www.geeksforgeeks.org/problems/sum-of-all-substrings-of-a-number-1587115621/1
+    
