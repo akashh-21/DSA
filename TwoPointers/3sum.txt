@@ -1,0 +1,53 @@
+# 3Sum Problem - C++ Solution
+
+### ❓ Problem:
+Given an array of integers `nums`, return all unique triplets `[a, b, c]` such that:
+a + b + c == 0 and all three numbers are at different indices in the array.
+
+---
+
+### 🚀 How the Code Works (Unforgettable Logic!)
+
+Imagine you are trying to **lock in 3 numbers** that add up to zero. Here's a simple way to find them:
+
+### ✅ Step-by-Step Logic:
+1. **Sort the array** so you can use two pointers effectively.
+2. **Fix the third number `c`** by going from end to front (`i = n - 1` to `2`).
+3. Then for each `c`, we try to find **two numbers `a` and `b`** at the front that satisfy:
+    a + b = -c
+4. Use two pointers (`left` and `right`) to scan for this pair:
+- If `a + b < -c`, move `left++`
+- If `a + b > -c`, move `right--`
+- If equal, store the triplet and skip any duplicates
+5. **Avoid duplicates** by skipping repeated values for all three positions: `nums[i]`, `nums[left]`, and `nums[right]`.
+
+---
+
+### 🧠 Why It’s Efficient:
+- Sorting takes `O(n log n)`
+- Each fixed `i` uses a two-pointer scan in `O(n)`
+- Total time: **`O(n^2)`**, best possible for this problem
+
+---
+
+### 💡 Example:
+
+For input: [2, -3, 0, -2, -5, -5, -4, 1, 2, -2, 2, 0, 2, -4, 5, 5, -10]
+Output:
+    [-10,5,5]
+    [-5,0,5]
+    [-4,2,2]
+    [-3,-2,5]
+    [-3,1,2]
+    [-2,0,2]
+
+---
+
+### 👨‍💻 How to Run
+Compile and run:
+```bash
+g++ three_sum.cpp -o three_sum
+./three_sum
+
+Refereces: 
+    https://leetcode.com/problems/3sum/
