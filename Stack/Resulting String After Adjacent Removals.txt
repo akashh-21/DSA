@@ -1,0 +1,56 @@
+# 🧹  Resulting String After Adjacent Removals
+
+### ❓ Problem Statement:
+Given a string `s`, repeatedly remove characters **if they are next to each other in the alphabet** (like `'a'` and `'b'`, or `'z'` and `'a'`). Return the final string after no more such pairs exist.
+
+---
+
+### 💡 Unforgettable Logic
+
+Think of a **stack** as a bin where:
+- You **push** each character one by one.
+- If the **current character and the top of the stack** are:
+  - `'a'` and `'z'` (or vice versa), or
+  - directly adjacent in the alphabet (like `'c'` and `'d'`)
+  → then **POP** the top (they cancel each other).
+
+➡️ Keep processing until no such pairs remain!
+
+---
+
+### 🧠 Step-by-Step:
+1. Push the first character.
+2. For each next character:
+   - If it’s alphabetically adjacent to the top of the stack → **pop the top**.
+   - Otherwise → **push** it.
+3. Finally, reverse the stack to get the final string.
+
+---
+
+### 💥 Example:
+
+**Input:** `"abczd"`  
+**Steps:**
+- Push `'a'`
+- `'a'` and `'b'` → pop `'a'`
+- Stack: empty, push `'b'`
+- `'b'` and `'c'` → pop `'b'`
+- Push `'z'`, then `'d'`
+
+**Output:** `"zd"`
+
+---
+
+### ⏱️ Time & Space Complexity:
+- **Time:** O(n)
+- **Space:** O(n) for stack
+
+---
+
+### 🚀 Run the Code:
+```bash
+g++ resulting_string.cpp -o result
+./result
+
+Refereces:
+    https://leetcode.com/problems/resulting-string-after-adjacent-removals/description/
