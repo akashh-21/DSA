@@ -1,0 +1,54 @@
+# Pythagorean Triplet Checker - C++ Solution
+
+### ❓ Problem:
+Given an array of integers, determine whether there exists **any triplet (a, b, c)** such that:
+    a² + b² = c²
+where all three are **different elements from the array**.
+
+---
+
+### 🧠 Unforgettable Logic
+
+We want to find if the array has **any three elements that satisfy the Pythagorean theorem**.
+
+### ✅ Steps:
+
+1. **Square all the elements.**
+   - Because the Pythagorean condition is based on squares: `a² + b² = c²`.
+   
+2. **Put all squares in a set** for **O(1)** lookup.
+   - This allows us to quickly check if `a² + b²` exists as `c²`.
+
+3. **Try every unique pair (a², b²)** and check if `a² + b²` is in the set.
+   - If yes, then `a, b, c` form a Pythagorean triplet.
+
+---
+
+### 💡 Example:
+For input:
+    [3, 2, 4, 6, 5]
+
+
+- Squares: [9, 4, 16, 36, 25]
+- 9 (3²) + 16 (4²) = 25 (5²)
+
+✅ Output:
+    Yes, a Pythagorean triplet exists in the array.
+
+
+---
+
+### ⏱️ Time & Space Complexity:
+- **Time:** O(n²) → for checking each pair
+- **Space:** O(n) → for storing squares in a set
+
+---
+
+### 👨‍💻 How to Run
+Compile and run:
+```bash
+g++ pythagorean_triplet.cpp -o triplet
+./triplet
+
+Refereces:
+    https://www.geeksforgeeks.org/problems/pythagorean-triplet3018/1
