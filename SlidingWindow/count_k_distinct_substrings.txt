@@ -1,0 +1,56 @@
+# 🔤 Count Substrings with Exactly K Distinct Characters
+
+### ❓ Problem
+
+Given a string `s` and an integer `k`, find the number of substrings that have exactly **k distinct characters**.
+
+---
+
+### 🧠 Unforgettable Explanation
+
+We use the **"at most" trick**:
+
+🧩 `Exactly K = At Most K - At Most (K - 1)`
+
+Why?  
+- "At most K" includes all substrings with 1 to K distinct characters.  
+- Subtracting "At most K-1" leaves only substrings with **exactly K** distinct characters.
+
+---
+
+### 🔄 `count(s, k)` Function Logic:
+
+- Sliding window + frequency map.
+- Keep expanding window by moving `j`.
+- If adding a character increases distinct count > k, shrink window by moving `i`.
+- Add `j - i + 1` to total count (number of substrings ending at `j` and starting from `i` to `j`).
+
+---
+
+### 🧪 Example:
+
+**Input:** `s = "pqpqs"`, `k = 2`  
+**Substrings with exactly 2 distinct characters:**
+
+- "pq", "pqp", "qp", "pq", "qs", "pqs"  
+**Output:** `7`
+
+---
+
+### ⏱️ Time and Space Complexity
+
+| Complexity | Value     | Explanation                                      |
+|------------|-----------|--------------------------------------------------|
+| Time       | O(n)      | Each character is processed at most twice        |
+| Space      | O(1)      | 26-size fixed array used (for lowercase letters) |
+
+---
+
+### ▶️ How to Run
+
+```bash
+g++ count_k_distinct_substrings.cpp -o count_k
+./count_k
+
+Reference:
+    https://www.geeksforgeeks.org/problems/count-number-of-substrings4528/1
