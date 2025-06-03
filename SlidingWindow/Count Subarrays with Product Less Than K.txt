@@ -1,0 +1,66 @@
+# 📊 Count Subarrays with Product Less Than K
+
+### ❓ Problem
+Given an array of positive integers and a value `k`, return the **number of contiguous subarrays** where the **product of all elements is less than `k`**.
+
+---
+
+### 🧠 Easy & Unforgettable Logic (Two Pointer + Sliding Window)
+
+**Idea:**  
+Use a sliding window `[i...j]` such that the product of all elements is less than `k`.  
+Expand the window to the right (`j++`).  
+If the product exceeds or equals `k`, shrink the window from the left (`i++`) until it's valid again.
+
+**Why `ans += j - i + 1`?**  
+If the window from `i` to `j` is valid, then:
+- Subarrays: `[nums[j]]`, `[nums[j-1], nums[j]]`, ..., `[nums[i], ..., nums[j]]`
+- That’s `j - i + 1` subarrays ending at `j`.
+
+---
+
+### 🔄 Steps
+
+1. Initialize product `p = 1`, window start `i = 0`, and answer `ans = 0`.
+2. Traverse the array with `j = 0` to `n-1`:
+   - Multiply current `nums[j]` into product.
+   - While product `>= k`, divide `nums[i]` out and move `i` forward.
+   - Add `j - i + 1` to answer.
+3. Return the answer.
+
+---
+
+### 🧪 Example
+
+**Input:**  
+`nums = [10, 5, 2, 6]`, `k = 100`
+
+**Valid subarrays:**  
+- [10], [5], [2], [6], [10,5], [5,2], [2,6], [5,2,6]
+
+**Output:** `8`
+
+nums = [10,9,10,4,3,8,3,3,6,2,10,10,9,3]
+k = 19
+Output : 18
+Expected : 18
+
+---
+
+### ⏱️ Time and Space Complexity
+
+| Complexity | Value       | Reason                                        |
+|------------|-------------|-----------------------------------------------|
+| Time       | O(n)        | Each element is visited at most twice         |
+| Space      | O(1)        | No extra space beyond a few variables         |
+
+---
+
+### ▶️ How to Run
+
+```bash
+g++ subarray_product_less_than_k.cpp -o product_k
+./product_k
+
+Reference: 
+    https://leetcode.com/problems/subarray-product-less-than-k/?envType=problem-list-v2&envId=sliding-window
