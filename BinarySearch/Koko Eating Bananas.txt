@@ -1,0 +1,64 @@
+# 🍌 Minimum Eating Speed (Koko Eating Bananas)
+
+### ❓ Problem
+You're given an array of `piles`, where each pile represents bananas.  
+You also have `h` hours to eat all the bananas.  
+Each hour, you can choose **any pile** and eat up to `k` bananas (your eating speed).  
+Find the **minimum integer value of `k`** such that you can eat all bananas in `h` hours.
+
+---
+
+### 🧠 Easy & Unforgettable Logic (Binary Search on Answer)
+
+Think of `k` (eating speed) as the answer.  
+We want to find the **smallest possible `k`** such that Koko can finish in `h` hours.
+
+We use **binary search**:
+- **Low = 1** (minimum speed)
+- **High = max(piles[])** (if she eats a whole pile in 1 hour)
+
+**Check Function:**
+- For each pile, calculate how many hours it would take to eat that pile at speed `k`:  
+  `ceil(pile / k)`
+- Add this to a total count of hours.  
+- If total hours needed ≤ `h`, then speed `k` is valid (try smaller).
+- Else, speed is too slow (try higher).
+
+---
+
+### 🔄 Steps
+
+1. Set `low = 1`, `high = max pile`.
+2. While `low ≤ high`:
+   - Mid = average of low and high.
+   - If `mid` is a valid speed (via check function), try smaller.
+   - Else, try larger.
+3. Return the smallest valid `k`.
+
+---
+
+### ⏱️ Time and Space Complexity
+
+| Complexity | Value           | Reason                                    |
+|------------|------------------|-------------------------------------------|
+| Time       | O(n * log m)     | n = piles.size(), m = max pile size       |
+| Space      | O(1)             | Only variables used                       |
+
+---
+
+### 🧪 Example
+
+**Input:**  
+`piles = [3,6,7,11]`, `h = 8`  
+**Output:** `4`  
+**Explanation:**  
+- Speed 4: [1h, 2h, 2h, 3h] = 8 hours ✅  
+- Speed 3: [1h, 2h, 3h, 4h] = 10 hours ❌
+
+---
+
+### ▶️ How to Run
+
+```bash
+g++ koko_eating_speed.cpp -o koko
+./koko
