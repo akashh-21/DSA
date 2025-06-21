@@ -1,0 +1,101 @@
+# Rotate Matrix (90 Degrees Clockwise)
+
+This C++ program rotates a square matrix 90 degrees clockwise using an efficient two-step approach: **transpose** and **reverse**.
+
+---
+
+## 🔄 Problem Statement
+
+Given an `N x N` matrix, rotate it **in place** by 90 degrees clockwise.
+
+### Example:
+
+**Input Matrix:**
+```
+1 2 3
+4 5 6
+7 8 9
+```
+
+**Output Matrix:**
+```
+7 4 1
+8 5 2
+9 6 3
+```
+
+---
+
+## ✅ Approach (Method 2: Transpose + Reverse)
+
+### Step 1: Transpose the Matrix
+- Swap rows and columns.
+- Element at `matrix[i][j]` becomes `matrix[j][i]`.
+
+**After Transpose:**
+```
+1 4 7
+2 5 8
+3 6 9
+```
+
+### Step 2: Reverse Each Row
+- Now, reverse every row to get the rotated matrix.
+
+**Final Matrix:**
+```
+7 4 1
+8 5 2
+9 6 3
+```
+
+---
+
+## 🧠 Unforgettable Intuition
+
+> **Transpose is like flipping across the main diagonal.  
+Then reversing rows is like shifting columns to rows in a rotated form.**
+
+Imagine:
+```
+Transpose → Flips rows and columns  
+Reverse    → Slides columns into rotated positions
+```
+
+---
+
+## ⏱️ Time and Space Complexity
+
+- **Time Complexity:** O(n²)  
+  We touch each element once during transpose and once during reverse.
+- **Space Complexity:** O(1)  
+  In-place rotation without using extra space.
+
+---
+
+## 🧪 Sample Code Output
+
+```
+Original Matrix:
+1 2 3 
+4 5 6 
+7 8 9 
+
+Rotated Matrix (90 degrees clockwise):
+7 4 1 
+8 5 2 
+9 6 3
+```
+
+---
+
+## 📁 File Structure
+
+```
+RotateMatrix/
+│
+├── RotateMatrix.cpp
+└── README.md
+
+Reference:
+    ht
