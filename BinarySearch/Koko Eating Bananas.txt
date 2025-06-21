@@ -12,7 +12,6 @@ Find the **minimum integer value of `k`** such that you can eat all bananas in `
 
 Think of `k` (eating speed) as the answer.  
 We want to find the **smallest possible `k`** such that Koko can finish in `h` hours.
-
 We use **binary search**:
 - **Low = 1** (minimum speed)
 - **High = max(piles[])** (if she eats a whole pile in 1 hour)

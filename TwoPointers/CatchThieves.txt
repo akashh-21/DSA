@@ -1,0 +1,42 @@
+# Catch Thieves
+
+This program solves the "Catch Thieves" problem where a policeman (`P`) can catch a thief (`T`) if they are within `k` distance from each other. Each policeman can catch at most one thief and vice versa.
+
+## 💡 Problem Statement
+
+Given an array of characters consisting of `'P'` and `'T'`, and an integer `k`, return the **maximum number of thieves** that can be caught by the police.
+
+### Example:
+**Input:**  
+`arr = ['P', 'T', 'T', 'P', 'T'], k = 2`  
+**Output:**  
+`Maximum thieves caught: 2`
+
+## ✅ Approach (Two Pointer Technique)
+
+- Use two pointers: one to find policemen (`i`), and the other to find thieves (`j`).
+- Move `i` until you find a `'P'`, and move `j` until you find a `'T'`.
+- If the absolute distance between `i` and `j` is within `k`, it's a valid catch.
+- Increment both pointers if a catch happens.
+- Otherwise, move the one who's behind, as they can't catch each other.
+
+### 🧠 Intuition:
+
+> "Pair nearest available 'P' with nearest 'T' as long as they’re within reach `k`. If not, discard the one who’s farther behind and move on."
+
+## ⏱️ Time & Space Complexity
+
+- **Time Complexity:** O(n)  
+  (Each character in the array is visited at most twice.)
+- **Space Complexity:** O(1)  
+  (Only constant extra space used.)
+
+## 🧪 Test It
+
+```java
+char[] arr = {'T', 'T', 'P', 'P', 'T', 'P'};
+int k = 1;
+// Output: 2
+
+Reference:
+    https://www.geeksforgeeks.org/problems/police-and-thieves--141631/1
