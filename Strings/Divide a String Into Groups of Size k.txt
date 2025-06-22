@@ -1,0 +1,99 @@
+# Divide String into Equal Parts (with Fill)
+
+This Python function splits a string `s` into chunks of length `k`, and fills the last chunk with a fill character if it's shorter than `k`.
+
+---
+
+## 💡 Problem Statement
+
+Given:
+- A string `s`
+- An integer `k` representing the length of each group
+- A fill character `fill`
+
+You must split the string into groups of `k` characters.  
+If the last group has fewer than `k` characters, fill it with the `fill` character until its length becomes `k`.
+
+---
+
+### ✅ Example
+
+**Input:**  
+`s = "abcdefghi"`  
+`k = 3`  
+`fill = "x"`
+
+**Output:**  
+```python
+["abc", "def", "ghi"]
+```
+
+**Another Example:**  
+`s = "abcde"`  
+`k = 3`  
+`fill = "z"`
+
+**Output:**  
+```python
+["abc", "dez"]
+```
+
+---
+
+## 🔍 Intuition & Step-by-Step Logic
+
+1. Start from index 0.
+2. Take the next `k` characters as a group.
+3. If the group is shorter than `k`, fill it with `(k - len(group))` copies of `fill`.
+4. Add this group to the result list.
+5. Move to the next index by `k` and repeat.
+
+---
+
+## 🧠 Easy Way to Remember
+
+> **"Cut and pad if short."**  
+Keep slicing in chunks of `k`, and pad the last one if needed!
+
+---
+
+## ⏱️ Time and Space Complexity
+
+- **Time Complexity:** O(n), where `n` is the length of the string `s`
+- **Space Complexity:** O(n/k) for the result list
+
+---
+
+## 🧪 Sample Output
+
+```python
+Input: s = "hello", k = 2, fill = "x"
+Output: ['he', 'll', 'ox']
+```
+
+---
+
+## 🚀 How to Push This to GitHub
+
+```bash
+git init
+git add .
+git commit -m "Added divide string function with README"
+git remote add origin <your-github-repo-url>
+git push -u origin main
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+DivideString/
+├── divide_string.py
+└── README.md
+```
+
+---
+
+Reference:
+    https://leetcode.com/problems/divide-a-string-into-groups-of-size-k/description/?envType=daily-question&envId=2025-06-22
