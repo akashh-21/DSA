@@ -1,0 +1,92 @@
+# 💡 Minimize Sum of Two Numbers Formed From Digits
+
+Given an array of digits, form two numbers using all digits such that their sum is minimized. Return that minimum sum **as a string** to handle large values.
+
+---
+
+## 🧠 Intuition
+
+If you want to split digits into two numbers with the **minimum possible sum**, you should:
+- Sort the digits
+- Distribute them **alternately** between the two numbers so both numbers grow evenly
+
+### Example:
+For input: `[6, 8, 4, 5, 2, 3]`  
+Sorted: `[2, 3, 4, 5, 6, 8]`
+
+Distribute alternately:
+- `n1 = 2 4 6` → 246  
+- `n2 = 3 5 8` → 358  
+
+Now add: `246 + 358 = 604`
+
+---
+
+## 🔢 Approach
+
+1. **Sort** the array of digits.
+2. Create two strings: `n1` and `n2`.
+3. Alternate digits into `n1` and `n2` (even index to `n1`, odd to `n2`).
+4. Perform string-based addition on `n1` and `n2` to avoid integer overflow.
+
+---
+
+## ✨ Features
+
+- Handles large numbers by **string addition**
+- Efficient due to sorting + linear pass
+- Easy to extend for more complex digit handling
+
+---
+
+## ⏱️ Time and Space Complexity
+
+- **Time:** O(n log n) → Sorting the array  
+- **Space:** O(n) → For string building and result
+
+---
+
+## ✅ Sample Test Case
+
+```cpp
+Input: [6, 8, 4, 5, 2, 3]
+Output: "604"
+
+Input: [5, 3, 0, 7, 4]
+Output: "385"
+```
+
+---
+
+## 🛠️ How to Compile & Run
+
+```bash
+g++ -o min_sum min_sum.cpp
+./min_sum
+```
+
+---
+
+## 🚀 Git Commands to Push
+
+```bash
+git init
+git add .
+git commit -m "Added minSum from digits C++ solution with explanation"
+git remote add origin <your-repo-url>
+git push -u origin main
+```
+
+---
+
+## 📂 File Structure
+
+```
+MinSumFromDigits/
+├── min_sum.cpp
+└── README.md
+```
+
+---------
+Reference:
+    https://www.geeksforgeeks.org/problems/minimum-sum4058/1
