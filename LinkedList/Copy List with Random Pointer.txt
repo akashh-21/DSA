@@ -1,0 +1,52 @@
+# Copy List with Random Pointer
+
+This project implements a solution for copying a linked list where each node has two pointers:
+- `next`: points to the next node
+- `random`: can point to any node in the list or be `NULL`.
+
+### Problem Statement
+Given the head of a linked list, copy the list with both the `next` and `random` pointers and return the head of the deep copied list.
+
+---
+
+### 🔍 Approach
+
+1. **Duplicate Nodes with Next Pointer Only**:
+   - Traverse the original list and create a copy of each node.
+   - Connect only `next` pointers in the first pass.
+
+2. **Create a Mapping Between Original and Copy Nodes**:
+   - Use a `unordered_map<Node*, Node*>` to track which original node maps to which copied node.
+
+3. **Assign Random Pointers**:
+   - Use the map to assign `random` pointers for each copied node in a second pass.
+
+---
+
+### 🧠 Why It Works
+
+- The mapping ensures we know which new node corresponds to which old node.
+- Since random pointers may point to any node (not necessarily in order), the map helps us link them properly in O(1) time per node.
+
+---
+
+### 🕰️ Time & Space Complexity
+
+- **Time Complexity**: O(N) — We traverse the list a few times.
+- **Space Complexity**: O(N) — For the hashmap storing the node mappings.
+
+---
+
+### ✅ Example
+
+Original List:
+    7 -> 13 -> 11 -> 10 -> 1
+    Randoms:
+    13.random -> 7
+    11.random -> 1
+    10.random -> 11
+    1.random -> 7
+
+Reference:
+     https://leetcode.com/problems/copy-list-with-random-pointer/description/
+     
