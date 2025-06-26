@@ -1,0 +1,55 @@
+# Minimize String Value After K Removals
+
+### ✅ Problem Statement
+
+You are given a string `s` and an integer `k`. In one operation, you can remove a character from the string. Your goal is to perform exactly `k` such operations in a way that minimizes the sum of squares of the frequency of each character in the resulting string.
+
+---
+
+### 💡 Intuition
+
+If we want to **minimize the sum of squares** of character frequencies, we should always reduce the **highest frequency character** first — because squaring amplifies higher numbers more.
+
+Example:
+- "abbccc" → freq = {a:1, b:2, c:3}
+- Squared sum = 1² + 2² + 3² = 14
+- Remove 1 `c` → freq = {a:1, b:2, c:2} → sum = 1 + 4 + 4 = 9
+
+---
+
+### 🧠 Approach
+
+1. Count the frequency of all characters in the string using a `unordered_map`.
+2. Perform `k` iterations:
+   - Each time, reduce the character with the **highest frequency**.
+3. After all removals, calculate the sum of squares of remaining frequencies.
+
+---
+
+### 🕰️ Time and Space Complexity
+
+- **Time Complexity**:
+  - Frequency Counting: O(N)
+  - Each Removal: O(26) → worst case constant
+  - Total: O(N + K × 26) ⇒ Efficient for small `k`
+
+- **Space Complexity**: O(1) (since only lowercase letters are used, max 26 keys in map)
+
+---
+
+### 🧪 Example
+
+```cpp
+Input:
+s = "abbccc"
+k = 2
+
+Output:
+9
+
+Explanation:
+- Remove one 'c': {a:1, b:2, c:2} → sum = 1 + 4 + 4 = 9
+- Remove one 'b': {a:1, b:1, c:2} → sum = 1 + 1 + 4 = 6
+
+Reference:
+    https://www.geeksforgeeks.org/problems/game-with-string4100/1
