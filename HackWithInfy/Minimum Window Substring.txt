@@ -1,0 +1,95 @@
+# 🔍 Minimum Window Substring
+
+### 🚀 Problem
+
+Given two strings `s` and `t`, return the **minimum window substring** of `s` such that every character in `t` (including duplicates) is included.  
+If there is no such substring, return an empty string.
+
+---
+
+### 📥 Example
+
+    Input:
+    s = "ADOBECODEBANC"
+    t = "ABC"
+
+    Output:
+    "BANC"
+
+
+---
+
+### 🧠 Intuition
+
+We want the **smallest window** in `s` that contains all characters of `t`.  
+To do that, we:
+
+- Expand the window by moving the right pointer.
+- Shrink it from the left once all characters are matched.
+- Keep track of the smallest valid window.
+
+---
+
+### 💡 Key Concepts
+
+- **Two Pointers / Sliding Window**
+- **Character Frequency Map (unordered_map)**
+
+---
+
+### 🔍 Step-by-Step Logic
+
+1. **Initialize Map**:  
+   All characters in `t` are stored in a map with negative values (since we need them).
+
+2. **Expand the Window (right pointer `j`)**:  
+   As we move `j`, we increase the frequency of that character in the map.  
+   If that character is needed (i.e., its count is still `<= 0`), we increase our matched count `cnt`.
+
+3. **Contract the Window (left pointer `i`)**:  
+   Once all characters from `t` are matched (i.e., `cnt == t.length()`),  
+   we try to minimize the window by shrinking from the left.
+
+4. **Update Answer**:  
+   When a valid window is found (all characters matched), update `start` and `ans` if it’s the smallest so far.
+
+5. **Return Result**:  
+   - If `ans == INT_MAX`: No valid window found → return `""`
+   - Else → return `s.substr(start, ans)`
+
+---
+
+### 🔧 Time & Space Complexity
+
+- **Time Complexity**: `O(n)`  
+  Each character is visited at most twice (once by `j`, once by `i`)
+
+- **Space Complexity**: `O(1)`  
+  At most 128 characters in the ASCII map
+
+---
+
+### ✅ Sample Output
+
+    Minimum window: BANC
+
+
+---
+
+### 🧠 Memory Hook: Don’t Forget This Logic!
+
+💭 Imagine `t` as your checklist, and you're walking (`j`) through a warehouse (`s`) grabbing required items.  
+Once your bag has everything, you try to throw out unneeded stuff from the front (`i`) to keep it light.  
+You keep updating your record if the new bag is smaller but still has all the required items.
+
+This is exactly what **sliding window** with two pointers and a map does!
+
+---
+
+### 📁 Files Included
+
+- `min_window_substring.cpp` — Complete C++ implementation.
+- `min_window_substring.txt` — Full logic explained with visualization.
+
+Reference:
+    https://leetcode.com/problems/minimum-window-substring/
