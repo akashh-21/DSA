@@ -1,0 +1,78 @@
+# 🔁 Next Greater Element in a Circular Array
+
+### 🧩 Problem Statement
+
+Given a **circular array**, return an array where each element is replaced with the **next greater element** to its right.  
+If no such element exists, use `-1`.
+
+---
+
+### 🧠 Example
+
+Input: [1, 2, 1]
+Output: [2, -1, 2]
+
+Why?
+- For `1` → next greater is `2`
+- For `2` → no greater element after it → `-1`
+- For `1` → again circularly next greater is `2`
+
+---
+
+### 💡 Intuition
+
+The idea is to simulate a circular array by iterating **twice** over it (i.e., `2n` times).  
+We use a **monotonic decreasing stack** to keep track of the "next greater" elements efficiently.
+
+---
+
+### 📌 Step-by-Step Logic
+
+1. **Double Iteration**:  
+   We go from `2n - 1` to `0` (reverse traversal).  
+   This allows us to **see the array as circular** — like wrapping around.
+
+2. **Modulo Trick**:  
+   Use `i % n` to simulate circular indexing.
+
+3. **Use Stack**:  
+   - We maintain a stack that always keeps **potential next greater elements**.
+   - If the current element is **greater than or equal to stack top**, pop the stack.
+   - If we're in the **first pass** (`i < n`) and the stack is not empty, then top is the next greater.
+
+4. **Push Current**:  
+   Always push the current element onto the stack for the next elements to use.
+
+---
+
+### 🧠 Memory Hook (How to Never Forget)
+
+> Imagine you're looking **ahead in a circle** for someone taller than you.  
+> You keep a stack of people you’ve seen who are taller — but if someone shorter comes in, they get booted out.  
+> You go around **twice** to make sure you didn’t miss anyone due to the circular queue!
+
+---
+
+### 🧪 Sample Output
+
+Next larger elements: 2 -1 2
+
+---
+
+### ⏱️ Time & Space Complexity
+
+- **Time Complexity**: `O(n)`
+  - Each element is pushed and popped from the stack at most once.
+- **Space Complexity**: `O(n)`
+  - For the result array and the stack.
+
+---
+
+### 📁 Files Included
+
+- `Next_Greater_Element_in_Circular_Array.Java` – Full Java implementation.
+- `Next_Greater_Element_in_Circular_Array.txt` – Clear and memorable explanation of the logic.
+
+References:
+    https://www.geeksforgeeks.org/problems/next-greater-element/1
+    

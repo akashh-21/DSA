@@ -1,0 +1,83 @@
+# ⚡ Next Greater Element I – Map + Stack Approach
+
+### 🧩 Problem Statement
+
+You're given two arrays `nums1` and `nums2`.  
+Each element of `nums1` is **present in `nums2`**, and `nums2` is a larger array.  
+For each element in `nums1`, find the **next greater element in `nums2`**.  
+If it doesn't exist, return `-1`.
+
+---
+
+### 📌 Sample Example
+
+```txt
+Input:
+nums1 = [4, 1, 2]
+nums2 = [1, 3, 4, 2]
+
+Output:
+[-1, 3, -1]
+Explanation:
+
+For 4 → No greater element on the right → -1
+
+For 1 → Next greater is 3
+
+For 2 → No greater → -1
+
+💡 Key Idea
+We want to find the next greater element for every number in nums2,
+and then use a hash map to quickly find results for numbers in nums1.
+
+🚀 Approach
+Traverse nums2 from right to left.
+
+Use a monotonic decreasing stack:
+
+This keeps only the "greater" elements on the stack.
+
+For each element in nums2, store its next greater element in a map.
+
+For every element in nums1, lookup the result in the map.
+
+🧠 How It Works
+For each nums2[i], we remove all elements from the stack that are smaller or equal to it.
+
+If the stack is not empty, its top is the next greater element.
+
+Store this in a map as map[nums2[i]] = nextGreater.
+
+Then, just collect results for nums1 using the map.
+
+🧠 How to Remember This
+Think of nums2 as a rollercoaster, where you’re scanning from the end.
+For each drop (number), you're looking for the next higher peak (greater number).
+The stack remembers what you’ve seen and filters out anything not higher than the current number.
+
+🧪 Sample Output
+rust
+Copy
+Edit
+Next greater elements for nums1: -1 3 -1
+⏱️ Time and Space Complexity
+Time Complexity: O(n + m)
+(n = size of nums2, m = size of nums1)
+
+Space Complexity: O(n)
+For the stack and hashmap
+
+📁 Files Included
+next_greater_element_map_stack.cpp – Full C++ implementation
+
+README.md – Logic and explanation to help you remember the solution
+
+---
+
+### 📁 Files Included
+
+- `Next_Greater_Element_I.Java` – Full Java implementation.
+- `Next_Greater_Element_I.txt` – Clear and memorable explanation of the logic.
+
+References:
+    https://leetcode.com/problems/next-greater-element-i/   
