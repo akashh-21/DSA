@@ -1,0 +1,71 @@
+# 🔢 Next Greater Element III – Next Permutation Style
+
+### 🧩 Problem Statement
+
+Given a positive integer `n`, find the **smallest integer** that is greater than `n` and is made using the **same digits** as `n`.
+
+If no such number exists or the result exceeds the 32-bit integer limit, return `-1`.
+
+---
+
+### 📌 Example
+
+```txt
+Input: n = 12443322
+Output: 13222344
+
+Input: n = 21
+Output: -1
+🚀 Logic Overview
+This is based on the Next Permutation algorithm:
+
+Identify pivot: Scan from right to left, find the first i such that s[i] < s[i+1].
+
+Reverse the suffix: Reverse the part from i+1 to end.
+
+Swap with next greater digit: Find the first digit in the reversed suffix that's greater than s[i] and swap them.
+
+Convert back to integer and check overflow.
+
+🧠 Step-by-Step Dry Run
+Let’s take n = 12443322
+
+Convert to string: s = "12443322"
+
+Find pivot:
+
+s[2] = 4 and s[3] = 3 → not valid
+
+s[1] = 2 and s[2] = 4 → pivot found at index 1
+
+Reverse right of pivot → "12443322" → "12(224334)"
+
+Find next greater than 2 in suffix → it's 3, swap
+
+Final string: 13222344 → this is the answer
+
+💡 How to Remember This
+Think of the digits as a number lock:
+
+You're looking for the first digit from the right where the pattern starts to descend.
+
+Then, rotate the lock to find the next smallest step up, just enough to change it.
+
+This is the "next permutation" technique used in many problems (e.g., generating permutations in lexicographic order).
+
+🛠️ Time and Space Complexity
+Time Complexity: O(n)
+(Traverse string once, reverse and search)
+
+Space Complexity: O(n)
+(String conversion)
+
+⚠️ Edge Cases
+Already the largest permutation → return -1
+
+Result overflows int (i.e., greater than 2^31 - 1) → return -1
+
+📁 Files Included
+next greater element III.cpp – Full working C++ code
+
+next greater element III.md – Logic explanation and how to never forget it
