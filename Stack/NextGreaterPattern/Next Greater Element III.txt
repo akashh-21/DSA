@@ -69,3 +69,6 @@ Result overflows int (i.e., greater than 2^31 - 1) → return -1
 next greater element III.cpp – Full working C++ code
 
 next greater element III.md – Logic explanation and how to never forget it
+
+References:
+    https://leetcode.com/problems/next-greater-element-iii/description/
