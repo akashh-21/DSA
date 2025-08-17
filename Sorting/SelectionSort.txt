@@ -1,0 +1,63 @@
+Selection Sort in C++
+
+This program implements the Selection Sort algorithm to arrange elements of a vector in ascending order.
+
+💡 What the code does
+
+    Defines a SelectSort() function that finds the smallest element in the unsorted part of the array and places it at its correct position.
+
+    Creates a vector {5, 4, 3, 2, 1} in main().
+
+    Calls SelectSort() to sort the vector.
+
+    Prints the sorted vector to the output.
+
+🔧 How Selection Sort Works
+
+    Selection Sort divides the array into two parts:
+
+    Sorted part (initially empty, grows from the left)
+
+    Unsorted part (initially the whole array)
+
+For each position i:
+
+    Find the minimum element in the unsorted part (i to n-1)
+
+    Swap it with the element at position i
+
+    Move to the next position and repeat
+
+🧠 Step-by-Step Explanation of the Code
+
+Line	Description
+
+int n = arr.size();	                Get the number of elements in the array
+for(int i=0; i<n-1; i++)	        Loop through all positions
+MinIdx = -1, MinVal = INT_MAX	    Initialize minimum value and index
+for(int j=i; j<n; j++)	            Search for the minimum in the unsorted part
+if(arr[j] < MinVal)             	Update minimum value
+MinVal = arr[j]; MinIdx = j;    	Store minimum value and its index
+swap(arr[i], arr[MinIdx]);      	Put the minimum element at its correct position
+
+✅ Example
+
+Input:
+{5, 4, 3, 2, 1}
+
+After Selection Sort:
+1 2 3 4 5
+
+📌 Time & Space Complexity
+
+Metric	Value
+    Time Complexity (Best/Average/Worst)	O(n)
+    Space Complexity	O(1) (in-place algorithm)
+    Sorting Type	Unstable Sort
+
+❗ Selection Sort is unstable, because swapping elements may change the original relative order of equal elements.
+
+🚀 Conclusion
+
+Selection Sort is simple and easy to implement.
+It is not efficient for large datasets, but great for understanding basic sorting techniques.

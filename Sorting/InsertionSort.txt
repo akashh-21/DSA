@@ -1,0 +1,82 @@
+# Selection Sort in C++
+
+This program implements the **Selection Sort** algorithm to sort a vector of integers in **ascending order** using C++.
+
+---
+
+## 💡 What the Code Does
+
+- Defines a `SelectSort()` function to sort a vector using **Selection Sort**.
+- In `main()`, it initializes a vector `{5, 4, 3, 2, 1}`.
+- The sort function rearranges elements in ascending order.
+- The sorted array is printed to the output.
+
+---
+
+## 🔍 How Selection Sort Works
+
+Selection Sort divides the array into two parts:
+1. **Sorted** part (initially empty)
+2. **Unsorted** part
+
+For every position `i` from 0 to `n-1`:
+- Find the **minimum element** in the unsorted part (from `i` to `n-1`)
+- Swap it with the element at position `i`
+
+This continues until the array is fully sorted.
+
+---
+
+## 🧠 Code Explanation
+
+```cpp
+void SelectSort(vector<int>& arr){
+    int n = arr.size();
+    for(int i = 0; i < n - 1; i++){
+        int MinIdx = -1;
+        int MinVal = INT_MAX;
+        for(int j = i; j < n; j++){
+            if(arr[j] < MinVal){
+                MinVal = arr[j];
+                MinIdx = j;
+            }
+        }
+        swap(arr[i], arr[MinIdx]);
+    }
+}
+| Step                        | Description                             |
+| --------------------------- | --------------------------------------- |
+| `MinVal = INT_MAX`          | Initialize with a large value           |
+| `MinIdx = -1`               | Store index of the minimum element      |
+| `for(j = i; j < n)`         | Search for the minimum in unsorted part |
+| `swap(arr[i], arr[MinIdx])` | Swap the found minimum with `arr[i]`    |
+
+📌 Input and Output
+    Input:
+    {5, 4, 3, 2, 1}
+
+    Output:
+    1 2 3 4 5
+
+| Metric                           | Value                   |
+| -------------------------------- | ----------------------- |
+| **Best Case Time Complexity**    | O(n²)                   |
+| **Average Case Time Complexity** | O(n²)                   |
+| **Worst Case Time Complexity**   | O(n²)                   |
+| **Space Complexity**             | O(1) (In-place sorting) |
+| **Stable**                       | ❌ **Unstable**         |
+
+🔴 Selection Sort is Unstable
+Because it may swap non-adjacent elements, the relative order of equal elements may change.
+
+✅ When to Use Selection Sort?
+
+Good for small datasets
+
+Useful when memory write is costly (as it makes at most n swaps)
+
+Not efficient for large datasets
+
+🔚 Conclusion
+
+Selection Sort is a straightforward algorithm that's easy to implement and understand, but not optimal for performance on large lists. However, it's a good educational tool for learning sorting techniques.

@@ -1,0 +1,58 @@
+Bubble Sort in C++
+
+    This program demonstrates Bubble Sort, a simple sorting algorithm used to arrange elements of an array (or vector) in ascending order.
+
+💡 What the code does
+
+    Defines a function bubbleSort() that sorts the elements of an integer vector.
+
+    Creates a vector {5, 4, 3, 2, 1} in main() (which is unsorted).
+
+    Calls bubbleSort() to sort the vector.
+
+    Prints the sorted vector to the console.
+
+🔧 How Bubble Sort Works
+
+Bubble Sort works by repeatedly comparing adjacent elements and swapping them if they are in the wrong order.
+This process continues until the entire array is sorted.
+
+
+Line	Description
+    int n = arr.size();	                    Get number of elements in the vector
+    for(int i = 0; i < n-1; i++)	        Run outer loop n-1 times
+    bool flag = true;	                    Used to check if the array is already sorted
+    for(int j = 0; j < n-1-i; j++)	        Inner loop compares adjacent elements
+    if(arr[j] > arr[j+1])	                If current element is greater than next element...
+    swap(arr[j], arr[j+1]);	                ...swap them (so larger one moves right)
+    flag = false;	                        Indicates that a swap happened in this pass
+    if(flag == true) break;	                If no swap happened, exit early (already sorted)
+
+    
+✅ Example
+
+    Input Vector:
+        {5, 4, 3, 2, 1}
+
+    After Bubble Sort →
+        Output:
+        1 2 3 4 5
+
+
+Time Complexity:
+    WorstCase - O(n^2)
+    BestCase - O(n)
+    Average - O(n)
+
+Stable or Not:
+    bubbleSort is Stable Sort
+    it maintains the relative order of equal elements
+
+📌 Why the flag Variable?
+
+    It optimizes the algorithm by stopping early when the array becomes sorted before all passes are complete.
+
+🚀 Conclusion
+
+    Bubble Sort is easy to understand and implement.
+    Although not the most efficient for large datasets, it is great for learning basic sorting concepts.
